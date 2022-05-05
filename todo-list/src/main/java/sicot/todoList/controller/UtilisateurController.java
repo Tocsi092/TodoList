@@ -49,7 +49,7 @@ public class UtilisateurController {
 		
 		model.addAttribute("utilisateur", utilisateur);
 		
-		return "redirect:/tache/acceuil";
+		return "redirect:/tache/accueil";
 	}
 
 }

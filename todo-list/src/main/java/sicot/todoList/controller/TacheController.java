@@ -31,7 +31,7 @@ public class TacheController {
 	private HistoriqueRepository historiqueRepo;
 	
 	// Méthode renvoyant la liste de toutes les tâches de l'utilisateur
-	@GetMapping("/tache/acceuil")
+	@GetMapping("/tache/accueil")
 	public String viewAcceuil(@AuthenticationPrincipal UtilisateurDetails utilisateur, Model model) {
 		long idUser = utilisateur.getId();
 		
@@ -40,7 +40,7 @@ public class TacheController {
 		model.addAttribute("listeTaches", tacheRepo.findByUtilisateurId(idUser));
 		model.addAttribute("username", username);
 		
-		return "acceuil";
+		return "accueil";
 	}
 	
 	// Méthode permettant d'initaliser le formulaire de création
@@ -72,7 +72,7 @@ public class TacheController {
 		model.addAttribute("listeTaches", tacheRepo.findByUtilisateurId(idUser));
 		model.addAttribute("username", username);
 		
-		return "redirect:/tache/acceuil";
+		return "redirect:/tache/accueil";
 	}
 	
 	// Méthode permettant d'initaliser le formulaire de modification
@@ -133,7 +133,7 @@ public class TacheController {
 		model.addAttribute("listeTaches", tacheRepo.findByUtilisateurId(idUser));
 		model.addAttribute("username", username);
 		
-		return "redirect:/tache/acceuil";
+		return "redirect:/tache/accueil";
 	}
 	
 	// Méthode permettant la suppression d'une tâche
@@ -163,7 +163,7 @@ public class TacheController {
 		model.addAttribute("listeTaches", tacheRepo.findByUtilisateurId(idUser));
 		model.addAttribute("username", username);
 		
-		return "redirect:/tache/acceuil";
+		return "redirect:/tache/accueil";
 	}
 	
 	// Méthode permettant la changement d'état d'une tâche
@@ -203,7 +203,7 @@ public class TacheController {
 		model.addAttribute("listeTaches", tacheRepo.findByUtilisateurId(idUser));
 		model.addAttribute("username", username);
 		
-		return "redirect:/tache/acceuil";
+		return "redirect:/tache/accueil";
 	}
 	
 	// Méthode permettant d'accéder à l'historique complet d'une tâche

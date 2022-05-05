@@ -49,7 +49,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.loginPage("/login").permitAll()
 				.usernameParameter("username")
 				.passwordParameter("mdp")
-				.defaultSuccessUrl("/tache/acceuil")
+				.defaultSuccessUrl("/tache/accueil")
 			.and()
 			.logout().logoutUrl("/logout")
 					 .logoutSuccessUrl("/login").permitAll();
