@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Page d'acceuil</title>
+
+<link rel="stylesheet"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+		crossorigin="anonymous">
+
+<link th:href="@{/font-awesome-4.7.0/css/font-awesome.min.css}" rel="stylesheet">
+
+</head>
+<body>
+
+	<div class="container text-right">
+		<br>
+		<strong th:text="${username}"></strong><br>
+		<a th:href="@{/logout}" class="fa fa-user-times" aria-hidden="true" style="color: black">&nbsp; Déconnexion</a>
+	</div>
+	
+	<br>
+	<br>
+
+	<div class="container">
+		<h1 style="text-align:center">My Todo List</h1><br>
+		<a th:href="@{/tache/nouvelleTache}" class="fa fa-plus btn btn-info" aria-hidden="true">&nbsp; Ajouter une tâche</a><br><br>
+		
+  		<input type="text" placeholder="Rechercher..." style="width: 100%" id="searchBar" onkeyup='tableSearch()'><br><br>
+  		
+		<table border="1" class="table table-striped table-responsive-md" id="table">
+			<thead>
+				<tr>
+					<th style="width: 11%">Actions</th>
+					<th style="width: 79%">Intitulé</th>
+					<th style="width: 10%">Etat</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="tache : ${listeTaches}">
+					<td><a th:href="@{/tache/modifier/{id}(id=${tache.id})}" class="fa fa-pencil-square-o fa-lg" aria-hidden="true" style="color: #5F9EA0"></a>&nbsp;&nbsp;
+						<a th:href="@{/tache/supprimer/{id}(id=${tache.id})}" class="fa fa-window-close fa-lg" aria-hidden="true" style="color: red" onclick="return confirm('Voulez-vous vraiment supprimer cette tâche ?')"></a>&nbsp;&nbsp;
+						<a th:href="@{/tache/visualiserHistorique/{id}(id=${tache.id})}" class="fa fa-list-ul fa-lg" aria-hidden="true" style="color: #5F9EA0"></a>
+					</td>
+					<td th:text="${tache.nom}"></td>
+					<td> <div th:switch="${tache.etat}"> 
+						 	<a th:case="true" th:href="@{/tache/modifierEtat/{id}(id=${tache.id})}" class="fa fa-check-square" aria-hidden="true" style="color: green">&nbsp; Terminée le&nbsp;<span th:text="${tache.getDateClotureClean}"></span></a>
+						 	<a th:case="false" th:href="@{/tache/modifierEtat/{id}(id=${tache.id})}" class="fa fa-square-o" aria-hidden="true" style="color: #778899">&nbsp; En cours</a>
+						 </div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+<script type="application/javascript">
+	function tableSearch(){
+		let input, filter, table, tr, td, txtValue;
+		
+		input = document.getElementById("searchBar");
+		filter = input.value.toUpperCase();
+		table = document.getElementById("table");
+		tr = table.getElementsByTagName("tr");
+		
+		for(let i=0; i < tr.length; i++){
+			td = tr[i].getElementsByTagName("td")[1];
+			if(td) {
+				txtValue = td.textContent || td.innerText;
+				if(txtValue.toUpperCase().indexOf(filter) > -1){
+					tr[i].style.display = "";
+				} else { tr[i].style.display = "none"; }
+			}
+		}
+	}
+
+
+</script>
+
+</body>
+</html>

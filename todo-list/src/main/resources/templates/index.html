@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Page d'acceuil</title>
+
+<link rel="stylesheet"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+		crossorigin="anonymous">
+</head>
+<body>
+
+	<div class="container" style="text-align:center">
+	
+		<br>
+		
+		<h1>Bienvenue sur My Todo List</h1><br><br>
+		<h2>Créez un compte ou connectez vous afin de pouvoir utiliser l'application en cliquant sur le lien ci-dessous</h2><br><br>
+		<a th:href="@{/login}">Juste ici</a>
+	</div>
+
+</body>
+</html>

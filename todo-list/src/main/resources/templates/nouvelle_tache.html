@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Ajouter une nouvelle tâche</title>
+
+<link rel="stylesheet"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+		crossorigin="anonymous">
+		
+</head>
+<body>
+
+	<div class="container text-center">
+		<h1>My Todo List</h1>
+		
+		<br><br>
+		
+		<h2>Créer une nouvelle tâche</h2>
+		
+		<br>
+		
+		<form action="#" th:action="@{/tache/creerTache}" th:object="${tache}", method="POST">
+			<div class="m-3">
+				<input type="text" th:field="${tache.nom}" required placeholder="Intitulé" class="form-control" id="nom"/>
+				
+				<br>
+					
+				<textarea th:field="${tache.description}" rows="5" cols="48" placeholder="Description" class="form-control" id="description"></textarea>
+					
+				<br><br>
+				<button type="submit" class="btn btn-info col-2">Créer</button>
+			</div>
+		</form>
+	</div>
+
+</body>
+</html>
